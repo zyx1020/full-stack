@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+<h1>Are you sure to order again?</h1>
+<table>
+	<tr>
+	{%for i in orderitems%}
+		{%for m in menuitems%}
+			{%if m.id == i.menu_id%}
+				<td>{{m.name}}</td>
+				<td>{{m.price}}</td>
+				<td>{{i.quantity}}</td>
+			{%endif%}
+		{%endfor%}
+	{%endfor%}	
+	</tr>
+</table>
+<form action="{{url_for('orderAgain',user_id = user_id,order_id = order_id)}}" method="post">
+	<input type="submit" value="Add To Order">
+</form>
+<a href="{{url_for('listOrders',user_id = user_id)}}">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+<h1>Are you sure to remove this order?</h1>
+<form action="{{url_for('removeOrder',user_id=user_id,order_id=order_id)}}" method="post">
+	<input type="submit" value="Yes">
+</form>
+<a href="{{url_for('viewOrder',user_id=user_id,order_id=order_id)}}">Cancel</a>
+</body>
+</html>

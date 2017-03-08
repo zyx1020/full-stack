@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+<div class="logout">
+	<h1>{{user.name}}, are you sure to log out?</h1>
+	<form action="{{url_for('toLogOut', user_id = user.id)}}" method="post">
+		<input type="submit" value="Confirm">
+	</form>
+	<a href="{{url_for('userPage', user_id = user.id)}}">Cancel</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+<h1>Are you sure to order all items in your cart?</h1>
+<form action="{{url_for('addToOrder',user_id = user_id)}}" method="post">
+	<input type="submit" value="Confirm">
+</form>
+<a href="{{url_for('myCart',user_id = user_id)}}">Cancel</a>
+</body>
+</html>

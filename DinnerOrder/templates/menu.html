@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+<div class="pane">
+	<h1>{{restaurant.name}}</h1>
+	{%with messages = get_flashed_messages()%}
+		{%if messages%}
+		<ul>
+			{%for message in messages%}
+				<li><strong>{{message}}</strong></li>
+			{%endfor%}
+		</ul>
+		{%endif%}
+	{%endwith%}
+	
+	{%if items != []%}
+		</br></br>
+		<h2>Appitizers</h2>
+		{%for item in items%}
+			{%if item.course == 'Appetizer'%}
+				<p>{{item.name}}</p>
+				<p>{{item.description}}</p>
+				<p>{{item.price}}</p>
+				<a href="{{url_for('addToCart',user_id=user_id,menu_id=item.id)}}">Add To Cart</a>
+			{%endif%}
+		{%endfor%}
+		</br></br>
+		<h2>Entrees</h2>
+		{%for item in items%}
+			{%if item.course == 'Entree'%}
+				<p>{{item.name}}</p>
+				<p>{{item.description}}</p>
+				<p>{{item.price}}</p>
+				<a href="{{url_for('addToCart',user_id=user_id,menu_id=item.id)}}">Add To Cart</a>
+			{%endif%}
+		{%endfor%}
+		</br></br>
+		<h2>Beverages</h2>
+		{%for item in items%}
+			{%if item.course == 'Beverage'%}
+				<p>{{item.name}}</p>
+				<p>{{item.description}}</p>
+				<p>{{item.price}}</p>
+				<a href="{{url_for('addToCart',user_id=user_id,menu_id=item.id)}}">Add To Cart</a>
+			{%endif%}
+		{%endfor%}
+		</br></br>
+		<h2>Desserts</h2>
+		{%for item in items%}
+			{%if item.course == 'Dessert'%}
+				<p>{{item.name}}</p>
+				<p>{{item.description}}</p>
+				<p>{{item.price}}</p>
+				<a href="{{url_for('addToCart',user_id=user_id,menu_id=item.id)}}">Add To Cart</a>
+			{%endif%}
+		{%endfor%}
+	{%else%}
+		<p>This restaurant has no menu!</p>
+		<a href="{{url_for('showAllRestaurants')}}">To choose another restaurant...</a>
+	{%endif%}
+</div>
+</body>
+</html>
